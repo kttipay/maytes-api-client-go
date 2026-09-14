@@ -1,0 +1,32 @@
+# Verifies the published package builds and is consumable on every Go version it
+# claims to support. The upstream pipeline that generates this repo exercises a
+# single version, so without this matrix that claim is untested.
+#
+# This file is generated — edit it at sdks/backend-sdk/mirror/go/ in the
+# api-ts-v3 monorepo, not here.
+
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Go ${{ matrix.go }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        go: ['1.22', '1.23', '1.24']
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go }}
+      # There is no registry to validate against: `go get` compiles straight
+      # from this repo, so a build failure here IS a broken release.
+      - run: go build ./...
+      - run: go vet ./...
