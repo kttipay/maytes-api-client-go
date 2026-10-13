@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **CheckoutUuid** | **string** |  | 
 **Status** | **string** |  | 
 **CheckoutUrl** | **string** |  | 
-**ExpiresAt** | **time.Time** |  | 
+**ExpiresAt** | **NullableTime** |  | 
 
 ## Methods
 
 ### NewCheckoutCreated
 
-`func NewCheckoutCreated(checkoutUuid string, status string, checkoutUrl string, expiresAt time.Time, ) *CheckoutCreated`
+`func NewCheckoutCreated(checkoutUuid string, status string, checkoutUrl string, expiresAt NullableTime, ) *CheckoutCreated`
 
 NewCheckoutCreated instantiates a new CheckoutCreated object
 This constructor will assign default values to properties that have it defined,
@@ -108,6 +108,16 @@ and a boolean to check if the value has been set.
 SetExpiresAt sets ExpiresAt field to given value.
 
 
+### SetExpiresAtNil
+
+`func (o *CheckoutCreated) SetExpiresAtNil(b bool)`
+
+ SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
+
+### UnsetExpiresAt
+`func (o *CheckoutCreated) UnsetExpiresAt()`
+
+UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

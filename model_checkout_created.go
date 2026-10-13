@@ -25,7 +25,7 @@ type CheckoutCreated struct {
 	CheckoutUuid string `json:"checkout_uuid"`
 	Status string `json:"status"`
 	CheckoutUrl string `json:"checkout_url"`
-	ExpiresAt time.Time `json:"expires_at"`
+	ExpiresAt NullableTime `json:"expires_at"`
 }
 
 type _CheckoutCreated CheckoutCreated
@@ -34,7 +34,7 @@ type _CheckoutCreated CheckoutCreated
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckoutCreated(checkoutUuid string, status string, checkoutUrl string, expiresAt time.Time) *CheckoutCreated {
+func NewCheckoutCreated(checkoutUuid string, status string, checkoutUrl string, expiresAt NullableTime) *CheckoutCreated {
 	this := CheckoutCreated{}
 	this.CheckoutUuid = checkoutUuid
 	this.Status = status
@@ -124,27 +124,29 @@ func (o *CheckoutCreated) SetCheckoutUrl(v string) {
 }
 
 // GetExpiresAt returns the ExpiresAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *CheckoutCreated) GetExpiresAt() time.Time {
-	if o == nil {
+	if o == nil || o.ExpiresAt.Get() == nil {
 		var ret time.Time
 		return ret
 	}
 
-	return o.ExpiresAt
+	return *o.ExpiresAt.Get()
 }
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckoutCreated) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ExpiresAt, true
+	return o.ExpiresAt.Get(), o.ExpiresAt.IsSet()
 }
 
 // SetExpiresAt sets field value
 func (o *CheckoutCreated) SetExpiresAt(v time.Time) {
-	o.ExpiresAt = v
+	o.ExpiresAt.Set(&v)
 }
 
 func (o CheckoutCreated) MarshalJSON() ([]byte, error) {
@@ -160,7 +162,7 @@ func (o CheckoutCreated) ToMap() (map[string]interface{}, error) {
 	toSerialize["checkout_uuid"] = o.CheckoutUuid
 	toSerialize["status"] = o.Status
 	toSerialize["checkout_url"] = o.CheckoutUrl
-	toSerialize["expires_at"] = o.ExpiresAt
+	toSerialize["expires_at"] = o.ExpiresAt.Get()
 	return toSerialize, nil
 }
 
