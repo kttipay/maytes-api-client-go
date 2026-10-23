@@ -35,6 +35,7 @@ type Checkout struct {
 	Currency string `json:"currency"`
 	ServiceFee Fee `json:"service_fee"`
 	RefundedAmount int32 `json:"refunded_amount"`
+	RemainingAmount int32 `json:"remaining_amount"`
 	MerchantProcessorFee int32 `json:"merchant_processor_fee"`
 	MerchantServiceFee int32 `json:"merchant_service_fee"`
 	LastRefundAt NullableTime `json:"last_refund_at"`
@@ -46,7 +47,7 @@ type _Checkout Checkout
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCheckout(checkoutUuid string, merchantOrderId NullableString, status string, transactionRef NullableString, checkoutUrl string, merchantExpiresAt NullableTime, capturedAt NullableTime, returnUrl NullableString, cancelUrl NullableString, amount int32, currency string, serviceFee Fee, refundedAmount int32, merchantProcessorFee int32, merchantServiceFee int32, lastRefundAt NullableTime) *Checkout {
+func NewCheckout(checkoutUuid string, merchantOrderId NullableString, status string, transactionRef NullableString, checkoutUrl string, merchantExpiresAt NullableTime, capturedAt NullableTime, returnUrl NullableString, cancelUrl NullableString, amount int32, currency string, serviceFee Fee, refundedAmount int32, remainingAmount int32, merchantProcessorFee int32, merchantServiceFee int32, lastRefundAt NullableTime) *Checkout {
 	this := Checkout{}
 	this.CheckoutUuid = checkoutUuid
 	this.MerchantOrderId = merchantOrderId
@@ -61,6 +62,7 @@ func NewCheckout(checkoutUuid string, merchantOrderId NullableString, status str
 	this.Currency = currency
 	this.ServiceFee = serviceFee
 	this.RefundedAmount = refundedAmount
+	this.RemainingAmount = remainingAmount
 	this.MerchantProcessorFee = merchantProcessorFee
 	this.MerchantServiceFee = merchantServiceFee
 	this.LastRefundAt = lastRefundAt
@@ -399,6 +401,30 @@ func (o *Checkout) SetRefundedAmount(v int32) {
 	o.RefundedAmount = v
 }
 
+// GetRemainingAmount returns the RemainingAmount field value
+func (o *Checkout) GetRemainingAmount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.RemainingAmount
+}
+
+// GetRemainingAmountOk returns a tuple with the RemainingAmount field value
+// and a boolean to check if the value has been set.
+func (o *Checkout) GetRemainingAmountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RemainingAmount, true
+}
+
+// SetRemainingAmount sets field value
+func (o *Checkout) SetRemainingAmount(v int32) {
+	o.RemainingAmount = v
+}
+
 // GetMerchantProcessorFee returns the MerchantProcessorFee field value
 func (o *Checkout) GetMerchantProcessorFee() int32 {
 	if o == nil {
@@ -496,6 +522,7 @@ func (o Checkout) ToMap() (map[string]interface{}, error) {
 	toSerialize["currency"] = o.Currency
 	toSerialize["service_fee"] = o.ServiceFee
 	toSerialize["refunded_amount"] = o.RefundedAmount
+	toSerialize["remaining_amount"] = o.RemainingAmount
 	toSerialize["merchant_processor_fee"] = o.MerchantProcessorFee
 	toSerialize["merchant_service_fee"] = o.MerchantServiceFee
 	toSerialize["last_refund_at"] = o.LastRefundAt.Get()
@@ -520,6 +547,7 @@ func (o *Checkout) UnmarshalJSON(data []byte) (err error) {
 		"currency",
 		"service_fee",
 		"refunded_amount",
+		"remaining_amount",
 		"merchant_processor_fee",
 		"merchant_service_fee",
 		"last_refund_at",

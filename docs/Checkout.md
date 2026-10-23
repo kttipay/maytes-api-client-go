@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Currency** | **string** |  | 
 **ServiceFee** | [**Fee**](Fee.md) |  | 
 **RefundedAmount** | **int32** |  | 
+**RemainingAmount** | **int32** |  | 
 **MerchantProcessorFee** | **int32** |  | 
 **MerchantServiceFee** | **int32** |  | 
 **LastRefundAt** | **NullableTime** |  | 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewCheckout
 
-`func NewCheckout(checkoutUuid string, merchantOrderId NullableString, status string, transactionRef NullableString, checkoutUrl string, merchantExpiresAt NullableTime, capturedAt NullableTime, returnUrl NullableString, cancelUrl NullableString, amount int32, currency string, serviceFee Fee, refundedAmount int32, merchantProcessorFee int32, merchantServiceFee int32, lastRefundAt NullableTime, ) *Checkout`
+`func NewCheckout(checkoutUuid string, merchantOrderId NullableString, status string, transactionRef NullableString, checkoutUrl string, merchantExpiresAt NullableTime, capturedAt NullableTime, returnUrl NullableString, cancelUrl NullableString, amount int32, currency string, serviceFee Fee, refundedAmount int32, remainingAmount int32, merchantProcessorFee int32, merchantServiceFee int32, lastRefundAt NullableTime, ) *Checkout`
 
 NewCheckout instantiates a new Checkout object
 This constructor will assign default values to properties that have it defined,
@@ -358,6 +359,26 @@ and a boolean to check if the value has been set.
 `func (o *Checkout) SetRefundedAmount(v int32)`
 
 SetRefundedAmount sets RefundedAmount field to given value.
+
+
+### GetRemainingAmount
+
+`func (o *Checkout) GetRemainingAmount() int32`
+
+GetRemainingAmount returns the RemainingAmount field if non-nil, zero value otherwise.
+
+### GetRemainingAmountOk
+
+`func (o *Checkout) GetRemainingAmountOk() (*int32, bool)`
+
+GetRemainingAmountOk returns a tuple with the RemainingAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRemainingAmount
+
+`func (o *Checkout) SetRemainingAmount(v int32)`
+
+SetRemainingAmount sets RemainingAmount field to given value.
 
 
 ### GetMerchantProcessorFee
