@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **CustomerData** | Pointer to [**NullableCustomerData**](CustomerData.md) |  | [optional] 
 **Metadata** | Pointer to **map[string]interface{}** |  | [optional] 
 **AllocationModel** | Pointer to **NullableString** |  | [optional] 
+**Friends** | Pointer to [**NullableCheckoutFriends**](CheckoutFriends.md) | Who the customer is expected to split with. Pre-fills their share and allocation screens; the customer can still change it. Personal data — send it only when you hold it. | [optional] 
 
 ## Methods
 
@@ -453,6 +454,41 @@ HasAllocationModel returns a boolean if a field has been set.
 `func (o *CreateCheckoutRequest) UnsetAllocationModel()`
 
 UnsetAllocationModel ensures that no value is present for AllocationModel, not even an explicit nil
+### GetFriends
+
+`func (o *CreateCheckoutRequest) GetFriends() CheckoutFriends`
+
+GetFriends returns the Friends field if non-nil, zero value otherwise.
+
+### GetFriendsOk
+
+`func (o *CreateCheckoutRequest) GetFriendsOk() (*CheckoutFriends, bool)`
+
+GetFriendsOk returns a tuple with the Friends field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFriends
+
+`func (o *CreateCheckoutRequest) SetFriends(v CheckoutFriends)`
+
+SetFriends sets Friends field to given value.
+
+### HasFriends
+
+`func (o *CreateCheckoutRequest) HasFriends() bool`
+
+HasFriends returns a boolean if a field has been set.
+
+### SetFriendsNil
+
+`func (o *CreateCheckoutRequest) SetFriendsNil(b bool)`
+
+ SetFriendsNil sets the value for Friends to be an explicit nil
+
+### UnsetFriends
+`func (o *CreateCheckoutRequest) UnsetFriends()`
+
+UnsetFriends ensures that no value is present for Friends, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

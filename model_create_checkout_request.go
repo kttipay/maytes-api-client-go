@@ -36,6 +36,8 @@ type CreateCheckoutRequest struct {
 	CustomerData NullableCustomerData `json:"customer_data,omitempty"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	AllocationModel NullableString `json:"allocation_model,omitempty"`
+	// Who the customer is expected to split with. Pre-fills their share and allocation screens; the customer can still change it. Personal data — send it only when you hold it.
+	Friends NullableCheckoutFriends `json:"friends,omitempty"`
 }
 
 type _CreateCheckoutRequest CreateCheckoutRequest
@@ -533,6 +535,48 @@ func (o *CreateCheckoutRequest) UnsetAllocationModel() {
 	o.AllocationModel.Unset()
 }
 
+// GetFriends returns the Friends field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateCheckoutRequest) GetFriends() CheckoutFriends {
+	if o == nil || IsNil(o.Friends.Get()) {
+		var ret CheckoutFriends
+		return ret
+	}
+	return *o.Friends.Get()
+}
+
+// GetFriendsOk returns a tuple with the Friends field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateCheckoutRequest) GetFriendsOk() (*CheckoutFriends, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Friends.Get(), o.Friends.IsSet()
+}
+
+// HasFriends returns a boolean if a field has been set.
+func (o *CreateCheckoutRequest) HasFriends() bool {
+	if o != nil && o.Friends.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFriends gets a reference to the given NullableCheckoutFriends and assigns it to the Friends field.
+func (o *CreateCheckoutRequest) SetFriends(v CheckoutFriends) {
+	o.Friends.Set(&v)
+}
+// SetFriendsNil sets the value for Friends to be an explicit nil
+func (o *CreateCheckoutRequest) SetFriendsNil() {
+	o.Friends.Set(nil)
+}
+
+// UnsetFriends ensures that no value is present for Friends, not even an explicit nil
+func (o *CreateCheckoutRequest) UnsetFriends() {
+	o.Friends.Unset()
+}
+
 func (o CreateCheckoutRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -574,6 +618,9 @@ func (o CreateCheckoutRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AllocationModel.IsSet() {
 		toSerialize["allocation_model"] = o.AllocationModel.Get()
+	}
+	if o.Friends.IsSet() {
+		toSerialize["friends"] = o.Friends.Get()
 	}
 	return toSerialize, nil
 }

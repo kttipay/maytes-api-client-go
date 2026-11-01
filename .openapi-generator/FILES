@@ -19,6 +19,9 @@ docs/CheckoutCaptured.md
 docs/CheckoutCreated.md
 docs/CheckoutDiscount.md
 docs/CheckoutFee.md
+docs/CheckoutFriend.md
+docs/CheckoutFriendItem.md
+docs/CheckoutFriends.md
 docs/CreateCheckout401Response.md
 docs/CreateCheckout409Response.md
 docs/CreateCheckout422Response.md
@@ -71,6 +74,9 @@ model_checkout_captured.go
 model_checkout_created.go
 model_checkout_discount.go
 model_checkout_fee.go
+model_checkout_friend.go
+model_checkout_friend_item.go
+model_checkout_friends.go
 model_create_checkout_401_response.go
 model_create_checkout_409_response.go
 model_create_checkout_422_response.go
