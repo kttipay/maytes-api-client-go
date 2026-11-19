@@ -25,6 +25,7 @@ type Checkout struct {
 	CheckoutUuid string `json:"checkout_uuid"`
 	MerchantOrderId NullableString `json:"merchant_order_id"`
 	Status string `json:"status"`
+	// Always null. Will be removed in a future API version.
 	TransactionRef NullableString `json:"transaction_ref"`
 	CheckoutUrl string `json:"checkout_url"`
 	MerchantExpiresAt NullableTime `json:"merchant_expires_at"`
