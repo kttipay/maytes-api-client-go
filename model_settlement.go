@@ -38,6 +38,7 @@ type Settlement struct {
 	ReviewedByUserUuid NullableString `json:"reviewed_by_user_uuid"`
 	ReviewedAt NullableTime `json:"reviewed_at"`
 	RejectionReason NullableString `json:"rejection_reason"`
+	Upsell NullableSettlementUpsell `json:"upsell"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -48,7 +49,7 @@ type _Settlement Settlement
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSettlement(uuid string, merchantUuid string, periodFrom time.Time, periodTo time.Time, idempotencyKey string, merchantPayableAmount int32, settledAmount int32, currency string, status string, stripeTransferId NullableString, notes NullableString, settledAt NullableTime, expiresAt NullableTime, reviewedByUserUuid NullableString, reviewedAt NullableTime, rejectionReason NullableString, createdAt time.Time, updatedAt time.Time) *Settlement {
+func NewSettlement(uuid string, merchantUuid string, periodFrom time.Time, periodTo time.Time, idempotencyKey string, merchantPayableAmount int32, settledAmount int32, currency string, status string, stripeTransferId NullableString, notes NullableString, settledAt NullableTime, expiresAt NullableTime, reviewedByUserUuid NullableString, reviewedAt NullableTime, rejectionReason NullableString, upsell NullableSettlementUpsell, createdAt time.Time, updatedAt time.Time) *Settlement {
 	this := Settlement{}
 	this.Uuid = uuid
 	this.MerchantUuid = merchantUuid
@@ -66,6 +67,7 @@ func NewSettlement(uuid string, merchantUuid string, periodFrom time.Time, perio
 	this.ReviewedByUserUuid = reviewedByUserUuid
 	this.ReviewedAt = reviewedAt
 	this.RejectionReason = rejectionReason
+	this.Upsell = upsell
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
@@ -477,6 +479,32 @@ func (o *Settlement) SetRejectionReason(v string) {
 	o.RejectionReason.Set(&v)
 }
 
+// GetUpsell returns the Upsell field value
+// If the value is explicit nil, the zero value for SettlementUpsell will be returned
+func (o *Settlement) GetUpsell() SettlementUpsell {
+	if o == nil || o.Upsell.Get() == nil {
+		var ret SettlementUpsell
+		return ret
+	}
+
+	return *o.Upsell.Get()
+}
+
+// GetUpsellOk returns a tuple with the Upsell field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Settlement) GetUpsellOk() (*SettlementUpsell, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Upsell.Get(), o.Upsell.IsSet()
+}
+
+// SetUpsell sets field value
+func (o *Settlement) SetUpsell(v SettlementUpsell) {
+	o.Upsell.Set(&v)
+}
+
 // GetCreatedAt returns the CreatedAt field value
 func (o *Settlement) GetCreatedAt() time.Time {
 	if o == nil {
@@ -551,6 +579,7 @@ func (o Settlement) ToMap() (map[string]interface{}, error) {
 	toSerialize["reviewed_by_user_uuid"] = o.ReviewedByUserUuid.Get()
 	toSerialize["reviewed_at"] = o.ReviewedAt.Get()
 	toSerialize["rejection_reason"] = o.RejectionReason.Get()
+	toSerialize["upsell"] = o.Upsell.Get()
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
@@ -577,6 +606,7 @@ func (o *Settlement) UnmarshalJSON(data []byte) (err error) {
 		"reviewed_by_user_uuid",
 		"reviewed_at",
 		"rejection_reason",
+		"upsell",
 		"created_at",
 		"updated_at",
 	}

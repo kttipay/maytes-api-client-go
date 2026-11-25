@@ -23,6 +23,7 @@ docs/CheckoutFriend.md
 docs/CheckoutFriendItem.md
 docs/CheckoutFriends.md
 docs/CreateCheckout401Response.md
+docs/CreateCheckout403Response.md
 docs/CreateCheckout409Response.md
 docs/CreateCheckout422Response.md
 docs/CreateCheckoutRequest.md
@@ -54,6 +55,7 @@ docs/RefundCheckout409Response.md
 docs/ServiceCustomData.md
 docs/ServiceLineItem.md
 docs/Settlement.md
+docs/SettlementUpsell.md
 docs/Tax.md
 docs/TicketCustomData.md
 docs/TicketLineItem.md
@@ -78,6 +80,7 @@ model_checkout_friend.go
 model_checkout_friend_item.go
 model_checkout_friends.go
 model_create_checkout_401_response.go
+model_create_checkout_403_response.go
 model_create_checkout_409_response.go
 model_create_checkout_422_response.go
 model_create_checkout_request.go
@@ -108,6 +111,7 @@ model_refund_checkout_409_response.go
 model_service_custom_data.go
 model_service_line_item.go
 model_settlement.go
+model_settlement_upsell.go
 model_tax.go
 model_ticket_custom_data.go
 model_ticket_line_item.go

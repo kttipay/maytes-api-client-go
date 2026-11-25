@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **ReviewedByUserUuid** | **NullableString** |  | 
 **ReviewedAt** | **NullableTime** |  | 
 **RejectionReason** | **NullableString** |  | 
+**Upsell** | [**NullableSettlementUpsell**](SettlementUpsell.md) |  | 
 **CreatedAt** | **time.Time** |  | 
 **UpdatedAt** | **time.Time** |  | 
 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewSettlement
 
-`func NewSettlement(uuid string, merchantUuid string, periodFrom time.Time, periodTo time.Time, idempotencyKey string, merchantPayableAmount int32, settledAmount int32, currency string, status string, stripeTransferId NullableString, notes NullableString, settledAt NullableTime, expiresAt NullableTime, reviewedByUserUuid NullableString, reviewedAt NullableTime, rejectionReason NullableString, createdAt time.Time, updatedAt time.Time, ) *Settlement`
+`func NewSettlement(uuid string, merchantUuid string, periodFrom time.Time, periodTo time.Time, idempotencyKey string, merchantPayableAmount int32, settledAmount int32, currency string, status string, stripeTransferId NullableString, notes NullableString, settledAt NullableTime, expiresAt NullableTime, reviewedByUserUuid NullableString, reviewedAt NullableTime, rejectionReason NullableString, upsell NullableSettlementUpsell, createdAt time.Time, updatedAt time.Time, ) *Settlement`
 
 NewSettlement instantiates a new Settlement object
 This constructor will assign default values to properties that have it defined,
@@ -432,6 +433,36 @@ SetRejectionReason sets RejectionReason field to given value.
 `func (o *Settlement) UnsetRejectionReason()`
 
 UnsetRejectionReason ensures that no value is present for RejectionReason, not even an explicit nil
+### GetUpsell
+
+`func (o *Settlement) GetUpsell() SettlementUpsell`
+
+GetUpsell returns the Upsell field if non-nil, zero value otherwise.
+
+### GetUpsellOk
+
+`func (o *Settlement) GetUpsellOk() (*SettlementUpsell, bool)`
+
+GetUpsellOk returns a tuple with the Upsell field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpsell
+
+`func (o *Settlement) SetUpsell(v SettlementUpsell)`
+
+SetUpsell sets Upsell field to given value.
+
+
+### SetUpsellNil
+
+`func (o *Settlement) SetUpsellNil(b bool)`
+
+ SetUpsellNil sets the value for Upsell to be an explicit nil
+
+### UnsetUpsell
+`func (o *Settlement) UnsetUpsell()`
+
+UnsetUpsell ensures that no value is present for Upsell, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *Settlement) GetCreatedAt() time.Time`
